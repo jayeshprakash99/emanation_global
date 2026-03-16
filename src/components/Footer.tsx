@@ -1,77 +1,124 @@
 import { Link } from "react-router-dom";
+import { Mail } from "lucide-react";
 
 const Footer = () => {
-  return (
-    <footer className="border-t border-border/30 bg-card/50">
-      <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <span className="font-heading font-bold text-primary-foreground text-sm">E</span>
-              </div>
-              <span className="font-heading font-bold text-lg text-foreground">
-                Emanation<span className="gradient-text"> Global</span>
-              </span>
-            </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Building intelligent infrastructure with cloud computing, DevOps automation, and artificial intelligence.
-            </p>
-          </div>
+    return (
+        <footer className="bg-gray-900 text-gray-300">
+            <div className="container-custom py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                    {/* Brand */}
+                    <div>
+                        <Link to="/" className="flex items-center gap-3 mb-6">
+                            <img 
+                                src="/logo.png" 
+                                alt="Emanation Global Logo" 
+                                className="h-10 w-auto"
+                            />
+                            <span className="font-heading font-bold text-lg">
+                                <span style={{ color: '#518283' }}>Emanation</span>
+                                <span style={{ color: '#9AA365' }}> Global</span>
+                            </span>
+                        </Link>
+                        <p className="text-gray-400 text-sm leading-relaxed">
+                            Building intelligent infrastructure with Cloud & AI solutions for
+                            enterprises worldwide.
+                        </p>
+                    </div>
 
-          <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Services</h4>
-            <ul className="space-y-2 text-sm">
-              {["Cloud Architecture", "Cloud Migration", "DevOps & Automation", "AI & Machine Learning", "AI Data Engineering", "Cloud Security", "AI Chatbots"].map((s) => (
-                <li key={s}>
-                  <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">{s}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    {/* Services */}
+                    <div>
+                        <h4 className="font-heading font-semibold text-white mb-6">Services</h4>
+                        <ul className="space-y-3">
+                            {[
+                                { label: "Cloud Architecture", path: "/services/cloud-architecture" },
+                                { label: "Cloud Migration", path: "/services/cloud-migration" },
+                                { label: "DevOps & Automation", path: "/services/devops-automation" },
+                                { label: "AI & Machine Learning", path: "/services/ai-machine-learning" },
+                                { label: "Cloud Security", path: "/services/cloud-security" },
+                            ].map((item) => (
+                                <li key={item.path}>
+                                    <Link
+                                        to={item.path}
+                                        className="text-gray-400 hover:text-[#9AA365] transition-colors text-sm"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-          <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              {[
-                { label: "About", path: "/about" },
-                { label: "Case Studies", path: "/case-studies" },
-                { label: "Insights", path: "/insights" },
-                { label: "Careers", path: "/careers" },
-                { label: "Contact", path: "/contact" },
-              ].map((l) => (
-                <li key={l.path}>
-                  <Link to={l.path} className="text-muted-foreground hover:text-primary transition-colors">{l.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    {/* Company */}
+                    <div>
+                        <h4 className="font-heading font-semibold text-white mb-6">Company</h4>
+                        <ul className="space-y-3">
+                            {[
+                                { label: "About Us", path: "/about" },
+                                { label: "Industries", path: "/industries" },
+                                { label: "Insights", path: "/insights" },
+                                { label: "Contact", path: "/contact" },
+                            ].map((item) => (
+                                <li key={item.path}>
+                                    <Link
+                                        to={item.path}
+                                        className="text-gray-400 hover:text-[#9AA365] transition-colors text-sm"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-          <div>
-            <h4 className="font-heading font-semibold text-foreground mb-4">Get in Touch</h4>
-            <p className="text-muted-foreground text-sm mb-4">Ready to transform your infrastructure?</p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-5 py-2.5 rounded-lg font-medium text-sm text-primary-foreground transition-all duration-300 hover:opacity-90"
-              style={{ background: "var(--gradient-blue-purple)" }}
-            >
-              Schedule a Consultation
-            </Link>
-          </div>
-        </div>
+                    {/* Contact */}
+                    <div>
+                        <h4 className="font-heading font-semibold text-white mb-6">Contact</h4>
+                        <ul className="space-y-4">
+                            <li className="flex items-start gap-3">
+                                <Mail size={18} className="mt-0.5 flex-shrink-0" style={{ color: '#518283' }} />
+                                <a
+                                    href="mailto:business@emanationglobal.com"
+                                    className="text-gray-400 hover:text-[#9AA365] transition-colors text-sm"
+                                >
+                                    business@emanationglobal.com
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-        <div className="mt-16 pt-8 border-t border-border/30 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Emanation Global. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link to="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+                {/* Bottom Bar */}
+                <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p className="text-gray-500 text-sm">
+                        © {new Date().getFullYear()} Emanation Global. All rights reserved.
+                    </p>
+                    <div className="flex items-center gap-6">
+                        <Link to="/privacy" className="text-gray-500 hover:text-[#9AA365] text-sm transition-colors">
+                            Privacy Policy
+                        </Link>
+                        <Link to="/terms" className="text-gray-500 hover:text-[#9AA365] text-sm transition-colors">
+                            Terms of Service
+                        </Link>
+                    </div>
+                </div>
+
+                {/* Built By */}
+                <div className="border-t border-gray-800 mt-6 pt-6 text-center">
+                    <p className="text-gray-500 text-sm">
+                        Built by{" "}
+                        <a
+                            href="https://webytesolutions.in"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#9AA365] hover:text-[#518283] transition-colors font-medium"
+                        >
+                            Webyte Solutions
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    );
 };
 
 export default Footer;
